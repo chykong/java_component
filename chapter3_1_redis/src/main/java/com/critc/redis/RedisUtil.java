@@ -19,6 +19,7 @@ public class RedisUtil {
      *
      * @param key
      * @param value
+     * @param secs 秒数
      */
     public static void set(String key, Object value, int secs) {
         JedisPoolUtil.getJedis().setex(SerializeUtil.serialize(key), secs, SerializeUtil.serialize(value));
