@@ -1,14 +1,12 @@
 package com.critc.json;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -36,27 +34,6 @@ public class JsonUtil {
             e.printStackTrace();
         }
         return json_str;
-    }
-
-    /**
-     * 把字符串转成List，统一保存时使用
-     *
-     * @param str
-     * @return
-     */
-    @SuppressWarnings("unchecked")
-    public static List<LinkedHashMap<String, Object>> toList(String str) {
-        List<LinkedHashMap<String, Object>> list = null;
-        try {
-            list = objectMapper.readValue(str, List.class);// 把list对象转成LinkedhashMap,然后根据HashMap来取值
-        } catch (JsonParseException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return list;
     }
 
     /**
