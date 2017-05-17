@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+    <description>spring-data-redis配置</description>
+
+    <context:property-placeholder
+            ignore-unresolvable="true" location="classpath:/application.properties"/>
+    <context:annotation-config />
+    <context:component-scan base-package="com.critc" />
+
+    <!--redis连接池-->
+    <bean id="redisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="hostName" value="${redis.host}"></property>
+        <property name="port" value="${redis.port}"></property>
+        <property name="usePool" value="true"></property>
+    </bean>
+    <!-- RedisTemplate -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="redisConnectionFactory"></property>
+    </bean>
+
+    <!-- 序列化工具-->
+    <bean id="jdkSerializer"
+          class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+   <!-- 监听代理-->
+    <bean id="smsMessageDelegateListener"
+          class="com.critc.queue.SmsMessageDelegateListener"/>
+    <!-- 消息监听 -->
+    <bean id="smsMessageListener"
+          class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
+        <property name="delegate" ref="smsMessageDelegateListener"/>
+        <property name="serializer" ref="jdkSerializer"/>
+    </bean>
+    <!--消息发送工具 -->
+    <bean id="sendMessage" class="com.critc.queue.SendMessage">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
+    <!-- 定义消息的topic-->
+    <redis:listener-container>
+        <redis:listener ref="smsMessageListener" method="handleMessage"
+                        serializer="jdkSerializer" topic="sms_queue_shortmessage"/>
+    </redis:listener-container>
+
+</beans>
