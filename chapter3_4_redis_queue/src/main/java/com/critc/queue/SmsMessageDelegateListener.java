@@ -3,11 +3,10 @@ package com.critc.queue;
 import java.io.Serializable;
 
 /**
- * 消息队列
+ * 消息队列监听
  *
  * @author chykong
  */
-//@Component("smsMessageDelegateListener")
 public class SmsMessageDelegateListener {
 
     // 监听Redis消息

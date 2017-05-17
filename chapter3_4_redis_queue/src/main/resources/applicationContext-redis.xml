@@ -20,7 +20,7 @@
         <property name="port" value="${redis.port}"></property>
         <property name="usePool" value="true"></property>
     </bean>
-    <!-- RedisTemplate -->
+    <!-- 注入RedisTemplate -->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="redisConnectionFactory"></property>
     </bean>
@@ -28,10 +28,10 @@
     <!-- 序列化工具-->
     <bean id="jdkSerializer"
           class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
-   <!-- 监听代理-->
+   <!-- 监听代理，用于接收redis消息-->
     <bean id="smsMessageDelegateListener"
           class="com.critc.queue.SmsMessageDelegateListener"/>
-    <!-- 消息监听 -->
+    <!-- 消息监听，spring内置的消息监听适配器 -->
     <bean id="smsMessageListener"
           class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
         <property name="delegate" ref="smsMessageDelegateListener"/>
