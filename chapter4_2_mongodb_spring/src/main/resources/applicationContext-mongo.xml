@@ -27,8 +27,9 @@
         </constructor-arg>
     </bean>
 
-    <mongo:repositories base-package="com.critc.mongo"/>
     <!-- 自动扫描以下包的有Doucment注解的类 -->
+    <mongo:repositories base-package="com.critc.mongo"/>
+
     <mongo:mapping-converter id="mappingConverter" base-package="com.critc.mongo.model"
                              type-mapper-ref="defaultMongoTypeMapper">
     </mongo:mapping-converter>
