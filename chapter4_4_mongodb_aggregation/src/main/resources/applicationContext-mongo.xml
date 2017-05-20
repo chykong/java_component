@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+    <context:property-placeholder
+            ignore-unresolvable="true" location="classpath:/mongodb.properties"/>
+
+    <mongo:mongo-client id="mongoClient" host="${mongo.host}" port="${mongo.port}">
+        <!-- credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}"-->
+    </mongo:mongo-client>
+
+    <mongo:db-factory id="mongoDbFactory"
+                      dbname="${mongo.database}"
+                      mongo-ref="mongoClient"/>
+    <!-- 默认Mongodb类型映射 -->
+    <bean id="defaultMongoTypeMapper" class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
+        <constructor-arg name="typeKey">
+            <!-- 这里设置为空,可以把 spring data mongodb 多余保存的_class字段去掉 -->
+            <null/>
+        </constructor-arg>
+    </bean>
+
+    <!-- 自动扫描以下包的有Doucment注解的类 -->
+    <mongo:repositories base-package="com.critc.mongo"/>
+
+    <mongo:mapping-converter id="mappingConverter" base-package="com.critc.mongo.model"
+                             type-mapper-ref="defaultMongoTypeMapper">
+    </mongo:mapping-converter>
+
+    <!-- Mongodb的模板 -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+        <constructor-arg name="mongoConverter" ref="mappingConverter"/>
+    </bean>
+</beans>
