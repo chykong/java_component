@@ -16,6 +16,8 @@
         <module>chapter4_1_mongodb</module>
         <module>chapter4_2_mongodb_spring</module>
         <module>chapter4_3_mongodb_autoid</module>
+        <module>chapter4_4_mongodb_aggregation</module>
+        <module>chapter4_5_mongodb_loc</module>
     </modules>
     <packaging>pom</packaging>
 
