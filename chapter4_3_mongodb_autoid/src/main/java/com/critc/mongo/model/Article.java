@@ -12,7 +12,6 @@ import java.util.List;
  */
 @Document(collection = "article_info")
 public class Article {
-    @GeneratedValue
     @Id
     private long id;//id
     @Field("title")

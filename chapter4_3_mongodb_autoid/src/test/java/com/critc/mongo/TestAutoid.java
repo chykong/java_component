@@ -2,6 +2,7 @@ package com.critc.mongo;
 
 import com.critc.mongo.model.Article;
 import com.critc.mongo.repository.ArticleRepository;
+import com.critc.mongo.util.MongoAutoidUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,14 @@ public class TestAutoid {
     private ArticleRepository articleRepository;
     @Autowired
     private MongoTemplate mongoTemplate;
+    @Autowired
+    private MongoAutoidUtil mongoAutoidUtil;
 
     @Test
     public void add() {
         for (int i = 0; i < 10; i++) {  //增加一条记录
             Article article = new Article();
+            article.setId(mongoAutoidUtil.getNextSequence("seq_article"));
             article.setTitle("MongoTemplate的基本使用");
             article.setAuthor("kcy");
             article.setUrl("http://jianshu.com/");
@@ -35,6 +39,7 @@ public class TestAutoid {
             article.setVisitCount(0L);
             article.setAddTime(new Date());
             mongoTemplate.save(article);
+
         }
 
         Iterable<Article> articles = articleRepository.findAll();

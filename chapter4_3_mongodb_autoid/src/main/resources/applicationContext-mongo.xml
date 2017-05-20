@@ -2,15 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
     <context:property-placeholder
             ignore-unresolvable="true" location="classpath:/mongodb.properties"/>
+    <!-- 让Spring通过自动扫描来查询和管理Bean -->
+    <context:component-scan base-package="com.critc" />
 
     <mongo:mongo-client id="mongoClient" host="${mongo.host}" port="${mongo.port}">
         <!-- credentials="${mongo.user}:${mongo.pwd}@${mongo.defaultDbName}"-->
@@ -27,7 +31,7 @@
         </constructor-arg>
     </bean>
 
-    <mongo:repositories base-package="com.critc.mongo"/>
+    <mongo:repositories base-package="com.critc.mongo.repository"/>
     <!-- 自动扫描以下包的有Doucment注解的类 -->
     <mongo:mapping-converter id="mappingConverter" base-package="com.critc.mongo.model"
                              type-mapper-ref="defaultMongoTypeMapper">
@@ -38,8 +42,5 @@
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
         <constructor-arg name="mongoConverter" ref="mappingConverter"/>
     </bean>
-
-    <!-- autoId实现需要的监听-->
-    <bean class="com.critc.mongo.listener.SaveMongoEventListener"></bean>
 
 </beans>
