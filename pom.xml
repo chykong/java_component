@@ -14,6 +14,8 @@
         <module>chapter3_3_redis_spring_session</module>
         <module>chapter3_4_redis_queue</module>
         <module>chapter4_1_mongodb</module>
+        <module>chapter4_2_mongodb_spring</module>
+        <module>chapter4_3_mongodb_autoid</module>
     </modules>
     <packaging>pom</packaging>
 
