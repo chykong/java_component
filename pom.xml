@@ -13,6 +13,7 @@
         <module>chapter3_2_redis_spring</module>
         <module>chapter3_3_redis_spring_session</module>
         <module>chapter3_4_redis_queue</module>
+        <module>chapter4_1_mongodb</module>
     </modules>
     <packaging>pom</packaging>
 
