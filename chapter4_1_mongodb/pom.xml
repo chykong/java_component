@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>chapter4_1_mongodb</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>chapter4_1_mongodb</name>
     <url>http://maven.apache.org</url>
