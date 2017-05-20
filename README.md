@@ -8,7 +8,7 @@
 - 2.2.Guava Cache
 - 3.Redis
 - 4.MongoDB
-- 5. Job
+- 5.Job
 - 6.验证码
 - 7.加解密
 - 8.RabbitMQ
@@ -19,6 +19,6 @@
 - 12 RPC
 - 12.1Thrift
 - 12.2 Hessian
-- 13.短信发送
+- 13短信发送
 - 14.二维码
 - 15.
