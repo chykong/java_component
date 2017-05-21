@@ -10,9 +10,6 @@
     <packaging>pom</packaging>
     <name>chapter5_1_job_timer Maven Webapp</name>
     <url>http://maven.apache.org</url>
-    <modules>
-        <module>../chapter5_3_job_spring</module>
-    </modules>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
