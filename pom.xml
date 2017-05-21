@@ -19,6 +19,8 @@
         <module>chapter4_4_mongodb_aggregation</module>
         <module>chapter4_5_mongodb_loc</module>
         <module>chapter5_1_job_timer</module>
+        <module>chapter5_2_job_quartz</module>
+        <module>chapter5_3_job_spring</module>
     </modules>
     <packaging>pom</packaging>
 
