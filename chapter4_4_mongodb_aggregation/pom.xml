@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>chapter4_3_mongodb_autoid</artifactId>
+        <artifactId>java_component</artifactId>
         <groupId>com.critc</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../chapter4_3_mongodb_autoid/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,12 +12,11 @@
 
     <name>chapter4_4_mongodb_aggregation</name>
     <url>http://maven.apache.org</url>
-    <modules>
-        <module>../chapter4_5_mongodb_loc</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>4.12</junit.version>
+        <spring.version>4.3.3.RELEASE</spring.version>
     </properties>
 
     <dependencies>
