@@ -21,6 +21,8 @@
         <module>chapter5_1_job_timer</module>
         <module>chapter5_2_job_quartz</module>
         <module>chapter5_3_job_spring</module>
+        <module>chapter11_1_multithread</module>
+        <module>chapter11_2_multithread_guava</module>
     </modules>
     <packaging>pom</packaging>
 
