@@ -23,6 +23,7 @@
         <module>chapter5_3_job_spring</module>
         <module>chapter11_1_multithread</module>
         <module>chapter11_2_multithread_guava</module>
+        <module>chapter6_verifycode</module>
     </modules>
     <packaging>pom</packaging>
 
