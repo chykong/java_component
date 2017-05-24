@@ -25,4 +25,4 @@ hs_err_pid*
 
 /chapter1_json/chapter1_json.iml
 /.idea/
-/java_component.iml
+*.iml
