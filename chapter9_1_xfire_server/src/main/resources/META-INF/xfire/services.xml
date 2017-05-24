@@ -1,0 +1,8 @@
+<beans>
+    <service xmlns="http://xfire.codehaus.org/config/1.0">
+        <name>FirstService</name>
+        <namespace>http://smallnest.googlepages.com/FirstService</namespace>
+        <serviceClass>com.critc.xfire.FirstService</serviceClass>
+        <implementationClass>com.critc.xfire.FirstServiceImpl</implementationClass>
+    </service>
+</beans>
