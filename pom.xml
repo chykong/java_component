@@ -25,6 +25,7 @@
         <module>chapter11_2_multithread_guava</module>
         <module>chapter6_verifycode</module>
         <module>chapter9_1_xfire_server</module>
+        <module>chapter9_2_cxf</module>
     </modules>
     <packaging>pom</packaging>
 
