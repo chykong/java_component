@@ -1,0 +1,11 @@
+<service name="HelloWorld">
+    <description>
+        HelloWorld Service Example
+    </description>
+    <parameter name="ServiceClass">
+        com.critc.axis2.HelloWorld
+    </parameter>
+    <operation name="sayHello">
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+</service>
