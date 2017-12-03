@@ -24,7 +24,7 @@ public class GuavaMultiThread {
      */
     public List<String> createTickets() {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             list.add("车票" + i);
         }
         return list;
