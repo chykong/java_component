@@ -17,8 +17,11 @@ public class RabbitMqTest {
     private AmqpTemplate amqpTemplate;
 
     @Test
-    public void send() {
-        amqpTemplate.convertAndSend("test_mq", "第一条消息");
+    public void send() throws Exception {
+        for (int i = 0; i < 100; i++) {
+            amqpTemplate.convertAndSend("test_mq", "第一条消息");
+            Thread.sleep(3000);
+        }
     }
 
 }

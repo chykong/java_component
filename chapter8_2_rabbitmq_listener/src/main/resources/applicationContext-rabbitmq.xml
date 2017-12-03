@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/rabbit
+    http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+    <description>rabbitmq 连接服务配置</description>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:/application.properties"/>
+    <rabbit:connection-factory id="rabbitConnectionFactory" host="${rabbit.host}" port="${rabbit.port}"
+                               username="${rabbit.username}" password="${rabbit.password}"
+                               virtual-host="${rabbit.vhost}" channel-cache-size="50"/>
+    <!-- 消费者 -->
+    <bean name="rabbitmqService" class="com.critc.service.RabbitmqService"></bean>
+    <rabbit:queue id="test_mq" name="test_mq" durable="true" auto-delete="false" exclusive="false" />
+    <!-- 配置监听 -->
+    <rabbit:listener-container connection-factory="rabbitConnectionFactory" acknowledge="auto" >
+        <rabbit:listener queues="test_mq" ref="rabbitmqService" />
+    </rabbit:listener-container>
+</beans>
