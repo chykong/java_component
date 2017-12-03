@@ -28,6 +28,7 @@
         <module>chapter9_2_cxf</module>
         <module>chapter9_3_axis2</module>
         <module>chapter17_echarts</module>
+        <module>chapter8_1_rabbitmq</module>
     </modules>
     <packaging>pom</packaging>
 
