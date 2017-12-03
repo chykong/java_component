@@ -29,6 +29,7 @@
         <module>chapter9_3_axis2</module>
         <module>chapter17_echarts</module>
         <module>chapter8_1_rabbitmq</module>
+        <module>chapter8_2_rabbitmq_listener</module>
     </modules>
     <packaging>pom</packaging>
 
